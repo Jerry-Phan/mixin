@@ -1,0 +1,167 @@
+@charset "UTF-8";
+@mixin fs($fontSize, $baseFontSize:10){
+	font-size: #{$fontSize / $baseFontSize}em;
+}
+%cf {
+	@if $support-ie6 or $support-ie7 {
+		*zoom: 1;
+	}
+	&:after {
+		display: block;
+		clear: both;
+		content: "";
+	}
+}
+// Clear float
+@mixin cf{
+	@if $support-ie6 or $support-ie7 {
+		*zoom: 1;
+	}
+	&:after {
+		display: block;
+		clear: both;
+		content: "";
+	}
+}
+//Mixin {max-width with $breakpoint}
+@mixin max {
+	@media screen and (max-width: #{$breakpoint}){
+		@content;
+	}
+}
+//Mixin {min-width with $breakpoint}
+@mixin min {
+	@media screen and (min-width: #{$breakpoint}){
+		@content;
+	}
+}
+//Mixin Transition
+@mixin transition($transitionTime){
+ -webkit-transition: all $transitionTime ease-out;
+		-moz-transition: all $transitionTime ease-out;
+		 -ms-transition: all $transitionTime ease-out;
+			-o-transition: all $transitionTime ease-out;
+			   transition: all $transitionTime ease-out;
+}
+//Mixin Border Radius
+@mixin br($varBorder){
+	border-radius: $varBorder;
+}
+//Mixin Border
+@mixin border($border-direction: "border", $var-width: $borderWidth, $var-color: $borderColor){
+	@if($border-direction == "border"){
+		border: $var-width solid $var-color;
+	}
+	@if($border-direction == "top"){
+		border-top: $var-width solid $var-color;
+	}
+	@if($border-direction == "left"){
+		border-left: $var-width solid $var-color;
+	}
+	@if($border-direction == "right"){
+		border-right: $var-width solid $var-color;
+	}
+	@if($border-direction == "bottom"){
+		border-bottom: $var-width solid $var-color;
+	}
+	@if($border-direction == "top-left"){
+		border-top: $var-width solid $var-color;
+		border-left: $var-width solid $var-color;
+	}
+	@if($border-direction == "bottom-right"){
+		border-bottom: $var-width solid $var-color;
+		border-right: $var-width solid $var-color;
+	}
+	@if($border-direction == "top-bot"){
+		border-top: $var-width solid $var-color;
+		border-bottom: $var-width solid $var-color;
+	}
+	@if($border-direction == "left-right"){
+		border-left: $var-width solid $var-color;
+		border-right: $var-width solid $var-color;
+	}
+	@if($border-direction == "none"){
+		border: none;
+	}
+
+}
+/*--------------------------------------------------------
+------------------------FLEX BOX-------------------------------
+---------------------------------------------------------*/
+@mixin box(){
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+@mixin j-box($box-justify){
+	@if($box-justify == "center"){
+		-webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+	}
+	@if($box-justify == "start"){
+		-webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+	}
+	@if($box-justify == "end"){
+		-webkit-box-pack: end;
+			-ms-flex-pack: end;
+					justify-content: flex-end;
+	}
+	@if($box-justify == "between"){
+		-webkit-box-pack: justify;
+	      -ms-flex-pack: justify;
+	          justify-content: space-between;
+	}
+	@if($box-justify == "around"){
+		-webkit-box-pack: justify;
+	      -ms-flex-pack: justify;
+	          justify-content: space-around;
+	}
+	@if($box-justify == "evenly"){
+		-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+						justify-content: space-evenly;
+	}
+}
+@mixin a-box($box-align){
+	@if($box-align == "center"){
+		-webkit-box-align: center;
+		 -ms-flex-align: center;
+				 align-items: center;
+	}
+	@if($box-align == "start"){
+		-webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+	}
+	@if($box-align == "end"){
+		-webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+	}
+	@if($box-align == "baseline"){
+		-webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+	}
+}
+/*--------------------------------------------------------
+----------------------GRID CONTAINER---------------------------------
+---------------------------------------------------------*/
+@mixin grid($grid-col){
+	display: grid;
+	@if($grid-col == 2){
+	grid-template-columns: repeat(2, auto);}
+	@if($grid-col == 3){
+	grid-template-columns: repeat(3, auto);}
+	@if($grid-col == 4){
+	grid-template-columns: repeat(4 auto);}
+	@if($grid-col == 6){
+	grid-template-columns: repeat(6 auto);}
+	@if($grid-col == 8){
+	grid-template-columns: repeat(8 auto);}
+	@if($grid-col == 12){
+	grid-template-columns: repeat(12 auto);}
+}

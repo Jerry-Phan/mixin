@@ -1,0 +1,38 @@
+@charset "UTF-8";
+// レイアウト用css for Layout
+// Can use id, If you use class Please adding prefix .l-
+
+/*------------------------------------------------------------
+	                    MAIN LAYOUT
+------------------------------------------------------------*/
+body {
+	min-width: $minWidth;
+}
+#wrap {
+}
+.l-content{
+	max-width: $maxWidth;
+	margin: 0 auto;
+	font-size: $fs;
+	@include box;
+}
+.pc-only{
+	@include max{
+		display: none !important;
+	}
+}
+.sp-only{
+	@include min{
+		display: none !important;
+	}
+	@include max{
+		display: block;
+	}
+}
+img{
+	@include max{
+		max-width: 100%;
+		height: auto;
+		margin: 0 auto;
+	}
+}
